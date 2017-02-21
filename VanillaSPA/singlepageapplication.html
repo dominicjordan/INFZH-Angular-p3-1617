@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>SPA Demo</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <body>
+        <nav>
+            <ul>
+                <li class="selected first"><a onclick="switchToPage(0)" href="#">Home</a></li>
+
+                <li class="second"><a onclick="switchToPage(1)" href="#second">Second</a></li>
+                
+                <li class="third"><a onclick="switchToPage(2)" href="#third">Third</a></li>
+            </ul>
+        </nav>
+        
+        <div class="container">
+        </div>
+
+        <template id="index-tpl">
+            <h1>Welkom op de SPA Demo pagina!</h1>
+            <p>
+                Een Single Page Application (SPA), ook wel een Single Page Interface (SPI) genoemd, is een webapplicatie of website die past op een enkele webpagina met het doel een vlotte gebruikerservaring te bieden, die te vergelijken is met een computerprogramma dat op de computer van de gebruiker zelf draait.
+            </p>
+            <img src="http://www.w3schools.com/css/trolltunga.jpg" />
+        </template>
+
+        <template id="second-tpl">
+            <h1>Welkom op de Second Page</h1>
+            <p>
+                Lorem ipsum dolor mit...
+            </p>
+            <img src="http://wowslider.com/sliders/demo-45/data1/images/waves.jpg" />
+        </template>
+
+        <template id="third-tpl">
+            <h1>Welkom op de Third Page</h1>
+            <p>
+                Lorem ipsum dolor mit...
+            </p>
+            <img src="http://wowslider.com/sliders/demo-7/data/images/amsterdam.jpg" />
+        </template>
+
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="application.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hellow Controller</title>
+		<script src="../angular.min.js"></script>
+	</head>
+	
+	<body ng-app="helloModule" ng-controller="helloController">
+
+		<ul>
+			<li ng-repeat="teacher in teachers | orderBy: 'lastname'">
+				{{teacher.lastname}}
+			</li>
+		</ul>
+
+		<script type="text/javascript" src="hello-controller.js"></script>
+	</body>
+</html>
