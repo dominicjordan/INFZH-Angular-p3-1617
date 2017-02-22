@@ -48,10 +48,26 @@
 
             <!-- FOREACH item IN items -->
     		<tr ng-repeat="item in items | filter: checked=false | filter: searchTerm">
-    			<td>{{item.name}}</td>
-                <td ng-class="{groceries: item.category==='Groceries', work: item.category==='Work', school: item.category==='School'}">{{item.category}}</td>
-                <td><input type="checkbox" ng-model="item.checked"></td>
-                <td><button type="button" class="btn btn-danger" ng-click="deleteItem(item)">Delete</button></td>
+    			<td>
+                    <span ng-hide="item.updating">{{item.name}}</span>
+                    <input type="text" ng-model="item.name" ng-show="item.updating">
+
+                </td>
+                <td ng-class="{groceries: item.category==='Groceries', work: item.category==='Work', school: item.category==='School'}">
+
+                    {{item.category}}
+
+                </td>
+                <td>
+                    <input type="checkbox" ng-model="item.checked" ng-disabled="!item.updating">
+                </td>
+                <td>
+                    <button type="button" class="btn btn-success" ng-click="updateItem(item)" ng-show="item.updating">Save</button>
+
+                    <button type="button" class="btn btn-warning" ng-click="item.updating=true;" ng-hide="item.updating">Update</button>
+
+                    <button type="button" class="btn btn-danger" ng-click="deleteItem(item)">Delete</button>
+                </td>
     		</tr>
 
     	</tbody>
