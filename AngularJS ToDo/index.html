@@ -22,13 +22,17 @@
     }
 
     </style>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
   </head>
-  <body>
+
+  <body ng-app="todoApp" ng-controller="todoController">
+
     <h1>Should do!</h1>
     <br>
     <div class="col-lg-6">
 	    <div class="input-group">
-	      <input type="text" class="form-control" placeholder="Search for...">
+	      <input type="text" class="form-control" placeholder="Search for..." ng-model="searchTerm">
 	    </div>
 	</div>
 
@@ -41,24 +45,15 @@
     		</tr>
     	</thead>
     	<tbody>
-    		<tr>
-    			<td>Milk</td><td class="groceries">Groceries</td><td><input type="checkbox"></td><td><button type="button" class="btn btn-danger">Delete</button></td>
+
+            <!-- FOREACH item IN items -->
+    		<tr ng-repeat="item in items | filter: checked=false | filter: searchTerm">
+    			<td>{{item.name}}</td>
+                <td ng-class="{groceries: item.category==='Groceries', work: item.category==='Work', school: item.category==='School'}">{{item.category}}</td>
+                <td><input type="checkbox" ng-model="item.checked"></td>
+                <td><button type="button" class="btn btn-danger" ng-click="deleteItem(item)">Delete</button></td>
     		</tr>
-    		<tr>
-    			<td>Butter</td><td class="groceries">Groceries</td><td><input type="checkbox"></td><td><button type="button" class="btn btn-danger">Delete</button></td>
-    		</tr>
-    		<tr>
-    			<td>Prepare Angular exercises</td><td class="work">Work</td><td><input type="checkbox"></td><td><button type="button" class="btn btn-danger">Delete</button></td>
-    		</tr>
-    		<tr>
-    			<td>Write an application letter</td><td class="school">School</td><td><input type="checkbox"></td><td><button type="button" class="btn btn-danger">Delete</button></td>
-    		</tr>
-    		<tr>
-    			<td>Prepare an Angular demo</td><td class="work">Work</td><td><input type="checkbox"></td><td><button type="button" class="btn btn-danger">Delete</button></td>
-    		</tr>
-    		<tr>
-    			<td>Be on time?</td><td class="school">School</td><td><input type="checkbox"></td><td><button type="button" class="btn btn-danger">Delete</button></td>
-    		</tr>
+
     	</tbody>
     </table>
 
@@ -67,19 +62,19 @@
     <form>
 	  <div class="form-group">
 	    <label for="itemInput">Should do item</label>
-	    <input type="text" class="form-control" id="itemInput" placeholder="item ...">
+	    <input type="text" class="form-control" id="itemInput" placeholder="item ..." ng-model="newItem.name">
 	  </div>
 	  <div class="form-group">
-	  	<select class="form-control">
-		  <option value="groceries">Groceries</option>
-		  <option value="work">Work</option>
-		  <option value="school">School</option>
+	  	<select class="form-control" ng-model="newItem.category">
+		  <option ng-repeat="cat in categories" value="{{cat}}">{{cat}}</option>
 		</select>
 	  </div>
 
 	  <button type="button" class="btn btn-danger">Reset</button>
-	  <button type="submit" class="btn btn-primary">Save</button>
+	  <button type="submit" class="btn btn-primary" ng-click="saveNewItem()">Save</button>
 	</form>
 
+
+    <script type="text/javascript" src="app.js"></script>
   </body>
 </html>
