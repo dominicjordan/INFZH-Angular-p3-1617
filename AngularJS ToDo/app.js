@@ -1,4 +1,4 @@
-var module = angular.module('todoApp', []);
+var module = angular.module('todoApp', ['todoApp.filters']);
 
 module.controller('todoController', function($scope) {
 	//HIER KOMT JE INHOUD :'D
@@ -24,11 +24,6 @@ module.controller('todoController', function($scope) {
 			{name:"Yet Another Item", checked:true, category:"Work"}
 		];
 	}
-
-
-
-
-	
 
 	$scope.deleteItem = function(item) {
 
