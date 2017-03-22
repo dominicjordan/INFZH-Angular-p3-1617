@@ -6,10 +6,10 @@ module.controller('todoController', function($scope) {
 	$scope.categories = ["Groceries", "Work", "School", "Lunch"];
 
 
-	var localItems = JSON.parse(localStorage.getItem("items"));
+	var localItems = localStorage.getItem("items");
 
 	if(localItems != undefined && localItems.length>0) {
-		$scope.items = localItems;
+		$scope.items = JSON.parse(localItems);
 	}
 	else {
 		$scope.items = [
@@ -23,12 +23,7 @@ module.controller('todoController', function($scope) {
 			{name:"Push code to Github", checked:false, category:"Work"},
 			{name:"Yet Another Item", checked:true, category:"Work"}
 		];
-	}
-
-
-
-
-	
+	}	
 
 	$scope.deleteItem = function(item) {
 
@@ -63,7 +58,4 @@ module.controller('todoController', function($scope) {
 
 		localStorage.setItem("items", JSON.stringify($scope.items));
 	};
-
-
-
 });

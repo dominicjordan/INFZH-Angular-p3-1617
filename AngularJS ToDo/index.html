@@ -9,18 +9,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <style type="text/css">
-    .groceries {
-    	color: #BADA55;
-    }
-
-    .work {
-    	color: #C0FFEE;
-    }
-
-    .school {
-    	color: #D13537;
-    }
-
+        .groceries {color: #2FA031;}
+        .work {color: #EA2227;}
+        .school {color: #2A4ED7;}
     </style>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
@@ -47,7 +38,7 @@
     	<tbody>
 
             <!-- FOREACH item IN items -->
-    		<tr ng-repeat="item in items | filter: checked=false | filter: searchTerm">
+    		<tr ng-repeat="item in items | filter: checked=false | filter: searchTerm track by $index">
     			<td>
                     <span ng-hide="item.updating">{{item.name}}</span>
                     <input type="text" ng-model="item.name" ng-show="item.updating">
